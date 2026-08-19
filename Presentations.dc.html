@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8">
+<title>Presentations, Tugce Aldemir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400..700&amp;family=Nunito+Sans:wght@300..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F8F7F3;color:#222A31;font-family:'Nunito Sans',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#3D5A73;text-decoration:none}
+a:hover{color:#A85F43}
+input::placeholder{color:#9BA3AB}
+</style>
+</helmet>
+<div data-screen-label="Presentations">
+  <div style="position:sticky;top:0;z-index:50;background:rgba(248,247,243,0.95);backdrop-filter:blur(8px);border-bottom:1px solid #DFDDD2">
+    <div style="max-width:1080px;margin:0 auto;padding:15px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <a href="Home.dc.html" style="font-family:'Lora',serif;font-size:19px;font-weight:600;color:#222A31">Tugce Aldemir</a>
+      <div style="display:flex;gap:22px;font-size:14px;font-weight:600;flex-wrap:wrap;align-items:center">
+        <a href="Home.dc.html" style="color:#5A6470">Home</a>
+        <a href="Grants.dc.html" style="color:#5A6470">Grants</a>
+        <a href="Publications.dc.html" style="color:#5A6470">Publications</a>
+        <a href="Presentations.dc.html" style="color:#3D5A73;border-bottom:2px solid #C97B5D;padding-bottom:2px">Presentations</a>
+        <a href="Teaching.dc.html" style="color:#5A6470">Teaching</a>
+        <a href="Lab.dc.html" style="color:#5A6470">CoHALE Lab</a>
+        <a href="News.dc.html" style="color:#5A6470">News</a>
+        <a href="CV.dc.html" style="color:#5A6470">CV</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:900px;margin:0 auto;padding:56px 28px 8px">
+    <div style="font-size:12.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#7290A8;margin-bottom:14px">Presentations</div>
+    <h1 style="font-family:'Lora',serif;font-size:40px;font-weight:600;margin:0 0 14px">Conference presentations &amp; invited talks</h1>
+    <p style="font-size:14.5px;line-height:1.7;color:#5A6470;margin:0 0 26px;max-width:68ch">Listed by date, most recent first. Presentations published as proceedings appear on the <a href="Publications.dc.html">Publications</a> page instead. <span style="color:#A85F43">*</span> indicates work with a mentoring postdoctoral researcher; <span style="color:#A85F43">**</span> with a mentoring graduate student.</p>
+    <input value="{{ q }}" onInput="{{ onQ }}" placeholder="Search by author, title, conference, or venue..." style="width:100%;box-sizing:border-box;padding:13px 18px;border:1.5px solid #DFDDD2;border-radius:8px;font-size:14.5px;font-family:'Nunito Sans',sans-serif;background:#FFFFFF;color:#222A31;outline:none" style-focus="border:1.5px solid #3D5A73">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 8px;align-items:center">
+      <sc-for list="{{ cats }}" as="c" hint-placeholder-count="3">
+        <button onClick="{{ c.onClick }}" style="border:1.5px solid {{ c.border }};background:{{ c.bg }};color:{{ c.color }};padding:8px 16px;border-radius:999px;font-size:13px;font-weight:700;font-family:'Nunito Sans',sans-serif;cursor:pointer">{{ c.label }} · {{ c.count }}</button>
+      </sc-for>
+      <div style="flex:1"></div>
+      <button onClick="{{ toggleFirst }}" style="border:1.5px solid {{ firstBorder }};background:{{ firstBg }};color:{{ firstColor }};padding:8px 16px;border-radius:999px;font-size:13px;font-weight:700;font-family:'Nunito Sans',sans-serif;cursor:pointer">{{ firstLabel }}</button>
+    </div>
+    <div style="font-size:12.5px;color:#8C949C;margin-bottom:4px">Showing {{ shownCount }} of {{ totalCount }}</div>
+  </div>
+  <div style="max-width:900px;margin:0 auto;padding:8px 28px 56px">
+    <div style="display:flex;flex-direction:column">
+      <sc-for list="{{ items }}" as="p" hint-placeholder-count="8">
+        <div style="display:grid;grid-template-columns:64px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid #DFDDD2">
+          <div style="font-family:'Lora',serif;font-size:17px;font-weight:700;color:#3D5A73;padding-top:1px">{{ p.year }}</div>
+          <div>
+            <div style="font-size:14.5px;line-height:1.65;color:#38434D">{{ p.authorsPre }}<span style="font-weight:800;color:#222A31">Aldemir, T.</span>{{ p.authorsPost }} ({{ p.year }}). {{ p.title }} <span style="font-style:italic">{{ p.venue }}</span></div>
+            <div style="display:flex;gap:12px;margin-top:7px;font-size:12px;align-items:center;flex-wrap:wrap">
+              <span style="background:{{ p.tagBg }};color:{{ p.tagColor }};font-weight:800;letter-spacing:0.8px;text-transform:uppercase;font-size:10.5px;padding:3px 10px;border-radius:3px">{{ p.type }}</span>
+              <sc-if value="{{ p.award }}" hint-placeholder-val="{{ false }}"><span style="background:#F2E4DC;color:#A85F43;font-weight:700;padding:3px 10px;border-radius:3px;font-size:11.5px">{{ p.award }}</span></sc-if>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="background:#2F475C;color:#C6D3DD">
+    <div style="max-width:1080px;margin:0 auto;padding:20px 28px;font-size:12.5px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <span>© 2026 Tugce Aldemir · <a href="Lab.dc.html" style="color:#E9BCA6">CoHALE Lab</a> · Texas A&amp;M University</span>
+      <a href="mailto:taldemir@tamu.edu" style="color:#C6D3DD" style-hover="color:#E9BCA6">taldemir@tamu.edu</a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { q: '', cat: 'All', first: false };
+  data() {
+    const PR = 'Peer-reviewed', IN = 'Invited';
+    return [
+      {t:PR, y:'2026', pre:'Kilinc, S.*, ', post:', Sabanwar, V.**, Bicer, A., & Song, D.', title:'Computational thinking and participation in rural Ag-STEM: A comparative case study of two middle school teams [Paper presentation].', venue:'AERA Annual Meeting, Los Angeles, CA.'},
+      {t:PR, y:'2026', pre:'Kilinc, S.*, ', post:', Sabanwar, V.**, Bicer, A., & Song, D.', title:'The AI as cognitive mentor: Scaffolding student scientific inquiry through dialogue [Paper presentation].', venue:'AERA Annual Meeting, Los Angeles, CA.'},
+      {t:PR, y:'2026', pre:'Bicer, A., Quiroz, F. S., Bicer, A., ', post:', Gooden, M., & Melek, Z.', title:'Mathematical creativity as a unifying lens: A case study of instructional shifts in elementary classrooms through sustained professional development [Paper presentation].', venue:'AERA Annual Meeting, Los Angeles, CA.'},
+      {t:PR, y:'2026', pre:'Sabanwar, V.**, ', post:', Kilinc, S.*, Bicer, A., & Song, D.', title:'Teacher conceptualization of student challenges and solutions for CT in a non-CS classroom [Poster presentation].', venue:'AERA Annual Meeting, Los Angeles, CA.'},
+      {t:PR, y:'2026', pre:'Bicer, A., ', post:', Gooden, M., Bicer, A., & Quiroz, F. S.', title:'Fostering mathematical creativity, content knowledge, and pedagogical content knowledge through generative AI-driven creativity-directed professional development [Poster presentation].', venue:'AERA Annual Meeting, Los Angeles, CA.'},
+      {t:PR, y:'2025', pre:'Sabanwar, V.**, ', post:', Kilinc, S.*, Bicer, A., & Song, D.', title:'Exploring Computational Thinking (CT) skills in the era of GenAI in K-12 education.', venue:'AECT International Convention, Las Vegas, NV.'},
+      {t:PR, y:'2025', pre:'Kilinc, S.*, ', post:', Sabanwar, V.**, Bicer, A., & Song, D.', title:'Enhancing research questions and hypothesis development through AI chatbot assistance in rural agricultural education.', venue:'AECT International Convention, Las Vegas, NV.'},
+      {t:PR, y:'2025', pre:'Bicer, A., ', post:'', title:'Fostering mathematical creativity through AI-driven professional development.', venue:'School Science and Mathematics Association Convention, Fort Worth, TX.'},
+      {t:PR, y:'2025', pre:'Bicer, A., ', post:', Krall, G., Quiroz, F., Chamberlin, S., Nelson, J., Lee, Y., & Kwon, H.', title:'Creativity in mathematics assessment.', venue:'9th ICMI-East Asia Regional Conference on Mathematics Education, Seoul, Korea.'},
+      {t:PR, y:'2025', pre:'Bicer, A., Bicer, A., ', post:', Gooden, M., Sanders, M., Lee, Y., Perihan, C., & Quiroz, F.', title:'Enhancing PSTs\u2019 mathematical creativity via STEM PBL: A mixed-methods study.', venue:'AERA Annual Meeting, Denver, CO.'},
+      {t:PR, y:'2025', pre:'Bicer, A., ', post:', Gooden, M., Erdogan, N., Sanders, M., & Quiroz, F.', title:'STEM PBL in the context of mathematical creativity.', venue:'AERA Annual Meeting, Denver, CO.'},
+      {t:PR, y:'2025', pre:'Bicer, A., Gooden, M., Sanders, M., ', post:', Kopparla, M., Lee, Y., & Calabrese, J.', title:'Problem-posing as a means for developing pre-service teachers\u2019 mathematical creativity.', venue:'AERA Annual Meeting, Denver, CO.'},
+      {t:PR, y:'2024', pre:'', post:', Shim, J., & Yoon, S.', title:'Tokenistic or genuine: Engaging students as co-designers of a curriculum unit [Roundtable].', venue:'AERA Convention, Philadelphia, PA.'},
+      {t:PR, y:'2023', pre:'Glaser, N., Center, M., Jensen, L., Davidson, A., ', post:'', title:'Monsters: Redefining monstrosity: Compassion and duty in \u2018Spiritfarer\u2019.', venue:'MultiPlay Network Video Game Monster Conference, virtual.'},
+      {t:PR, y:'2023', pre:'', post:', & Borge, M.', title:'Conceptualizing quality of intergroup dialogue in CSCL: Analysis of social and emotional talk [Full paper session].', venue:'AERA Convention, Chicago, IL.'},
+      {t:PR, y:'2022', pre:'', post:', & Borge, M.', title:'Leveraging a theoretically informed technological intervention to support multicultural collaborative competence.', venue:'AECT Convention, Las Vegas, NV.', award:'McJulien Scholar Best Paper Award'},
+      {t:PR, y:'2022', pre:'', post:', Glaser, N., & Davidesco, I.', title:'Exploring how user-centered approaches and empathy informed the co-design of a neural engineering curriculum.', venue:'AECT Convention, Las Vegas, NV.'},
+      {t:PR, y:'2022', pre:'Glaser, N., Herman, K., & ', post:'', title:'Artificial intelligence and computer vision: Opportunities and challenges for instructional design and evaluation [Roundtable].', venue:'AECT Convention, Las Vegas, NV.'},
+      {t:PR, y:'2021', pre:'', post:', Borge, M., & Soto, J.', title:'Sense-making patterns in online intergroup dialogues around politically charged topics [Poster].', venue:'AERA Convention, virtual.'},
+      {t:PR, y:'2020', pre:'', post:', & Borge, M.', title:'Learning to monitor and regulate socio-emotional interactions when discussing politically charged topics.', venue:'AECT Convention, virtual.'},
+      {t:PR, y:'2020', pre:'Rogers, S. E., Dickson-Deane, C., Liu, J. C., Asino, T., Subramony, D. P., Heggart, K., & ', post:'', title:'What is our responsibility to those prevented from learning by governmental policy decisions? [Presidential Panel].', venue:'AECT Convention, virtual.'},
+      {t:PR, y:'2019', pre:'', post:', & Borge, M.', title:'Socio-metacognitive processes in computer-supported collaborative learning [Full paper session].', venue:'AERA Convention, Toronto, Canada.'},
+      {t:PR, y:'2018', pre:'', post:'', title:'Re-considering triangulation: A critical realist approach to the mixed methods research praxis in social science.', venue:'AECT Convention, Kansas City, MO.'},
+      {t:PR, y:'2018', pre:'Resig, J., DuBoff, B., ', post:', & Anderle, J.', title:'AECT 2017 leadership intern class project: Facilitating organizational advancement through membership data analysis.', venue:'AECT Convention, Kansas City, MO.'},
+      {t:PR, y:'2018', pre:'', post:', Atas, A. H., & Celik, B.', title:'Proposal of an instructional design model for gamified learning environments: GELD model.', venue:'AECT Convention, Kansas City, MO.'},
+      {t:PR, y:'2017', pre:'Shearer, R., ', post:', & Bourland, J.', title:'Future learning experience for distance education.', venue:'AECT Convention, Jacksonville, FL.'},
+      {t:PR, y:'2017', pre:'Zhongrui, Y., Neumann, K., ', post:', Arrington, L., & Bae, H.', title:'Student organizations: Experiences and reflections from student leaders [Panel].', venue:'AECT Convention, Jacksonville, FL.'},
+      {t:PR, y:'2017', pre:'Romero, E. J., Colorado, Z., Watson, G., Sadaf, A., ', post:', & Dickson-Deane, C.', title:'Instructional design research women\u2019s caucus [Panel].', venue:'AECT Convention, Jacksonville, FL.'},
+      {t:PR, y:'2017', pre:'Gregg, A., Gray, J., & ', post:'', title:'Leveraging User Experience (UX) research to improve Canvas course design.', venue:'Penn State Learning Design Summer Camp, State College, PA.'},
+      {t:PR, y:'2016', pre:'Shearer, R., Gregg, A., & ', post:'', title:'Theory, practice, and future learning experience.', venue:'AECT Convention, Las Vegas, NV.'},
+      {t:PR, y:'2016', pre:'Celik, B., & ', post:'', title:'Student perceptions of usability, enjoyment, and vocabulary learning: A case of Vocabulary.com.', venue:'AECT Convention, Las Vegas, NV.'},
+      {t:PR, y:'2016', pre:'', post:', Celik, B., & Kaplan, G.', title:'An evaluation study of a classroom management system: Usability and teacher experiences and evaluations.', venue:'SITE Conference, Savannah, GA.'},
+      {t:PR, y:'2015', pre:'', post:', & Kaplan, G.', title:'Students\u2019 opinions and perceptions about a gamified online course: A qualitative study.', venue:'AECT Convention, Indianapolis, IN.'},
+      {t:PR, y:'2015', pre:'', post:', Gurel-Koybasi, N., Teker, M., & Cagiltay, K.', title:'Migration to a new learning management system: ODTUClass experience (in Turkish).', venue:'Akademik Bilisim Conference, Eskisehir, Turkey.'},
+      {t:PR, y:'2014', pre:'', post:', & Kaplan, G.', title:'A new approach to improve students\u2019 motivation and achievement in ESL writing: Project-based digital storytelling.', venue:'8th International Computer and Instructional Technologies Symposium, Edirne, Turkey.'},
+      {t:PR, y:'2014', pre:'Atas, A., ', post:', & Delialioglu, O.', title:'Acceptance of a mobile question-answer system: Application of the UTAUT model.', venue:'8th International Computer and Instructional Technologies Symposium, Edirne, Turkey.'},
+      {t:IN, y:'2023', pre:'', post:'', title:'Fostering diverse cultural identities in the classroom [Podcast episode].', venue:'Center for Engaged Learning, Elon University.'},
+      {t:IN, y:'2022', pre:'Glaser, N., Earnshaw, Y., ', post:', & Zoubi, D.', title:'Navigating the job market: Insight from the inside: How to land your dream job in academia or industry [Panel].', venue:'8th International Conference of the Immersive Learning Research Network, online.'},
+      {t:IN, y:'2022', pre:'', post:'', title:'Wise integration of technology into teaching and learning environments [Guest lecture].', venue:'EPSY 5530, Neag School of Education, University of Connecticut.'},
+      {t:IN, y:'2022', pre:'Gregg, A., Reid, R., ', post:', Garbrick, A., & Gray, J.', title:'Think-aloud methods for LXD: Just-in-time and systematic methods to improve course designs [Webinar].', venue:'AECT Design and Development Division LXD Webinar Series.'},
+      {t:IN, y:'2018', pre:'', post:', Cadieux-Boulden, D., Gyabak, K., Mao, Z., & Sacak, B.', title:'The future of design and technology [Panel].', venue:'AERA Convention, Design and Technology SIG Business Meeting, New York, NY.'},
+      {t:IN, y:'2015', pre:'', post:', & Kaplan, G.', title:'Effective presentation techniques and Web 2.0 presentation tools [Seminar series].', venue:'Turkiye Merkez Bankasi (Turkey Central Bank), Ankara, Turkey.'}
+    ];
+  }
+  renderVals() {
+    const all = this.data();
+    const { q, cat, first } = this.state;
+    const catDefs = [
+      {label:'All', match: () => true},
+      {label:'Peer-reviewed', match: p => p.t === 'Peer-reviewed'},
+      {label:'Invited', match: p => p.t === 'Invited'}
+    ];
+    const ql = q.trim().toLowerCase();
+    const search = p => !ql || (p.pre + 'Aldemir, T.' + p.post + ' ' + p.title + ' ' + p.venue).toLowerCase().includes(ql);
+    const tagStyles = {'Peer-reviewed':['#E5EBF0','#3D5A73'],'Invited':['#F2E4DC','#A85F43']};
+    const activeDef = catDefs.find(c => c.label === cat) || catDefs[0];
+    const items = all
+      .filter(activeDef.match).filter(search).filter(p => !first || p.pre === '')
+      .sort((a,b) => parseInt(b.y) - parseInt(a.y))
+      .map((p,i) => ({...p, key:i, type:p.t, year:p.y, authorsPre:p.pre, authorsPost:p.post, tagBg:tagStyles[p.t][0], tagColor:tagStyles[p.t][1]}));
+    const cats = catDefs.map(c => {
+      const count = all.filter(c.match).filter(p => !first || p.pre === '').length;
+      const active = c.label === cat;
+      return {label:c.label, count, onClick:() => this.setState({cat:c.label}),
+        bg: active ? '#3D5A73' : '#FFFFFF', color: active ? '#F8F7F3' : '#5A6470', border: active ? '#3D5A73' : '#DFDDD2'};
+    });
+    return {
+      q, onQ: e => this.setState({q: e.target.value}),
+      cats, items, shownCount: items.length, totalCount: all.length,
+      toggleFirst: () => this.setState(s => ({first: !s.first})),
+      firstLabel: first ? '✓ First author only' : 'First author only',
+      firstBg: first ? '#A85F43' : '#FFFFFF', firstColor: first ? '#F8F7F3' : '#5A6470', firstBorder: first ? '#A85F43' : '#DFDDD2'
+    };
+  }
+}
+</script>
+</body>
+</html>

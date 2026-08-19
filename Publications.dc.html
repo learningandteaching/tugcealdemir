@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8">
+<title>Publications, Tugce Aldemir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400..700&amp;family=Nunito+Sans:wght@300..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F8F7F3;color:#222A31;font-family:'Nunito Sans',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#3D5A73;text-decoration:none}
+a:hover{color:#A85F43}
+input::placeholder{color:#9BA3AB}
+</style>
+</helmet>
+<div data-screen-label="Publications">
+  <div style="position:sticky;top:0;z-index:50;background:rgba(248,247,243,0.95);backdrop-filter:blur(8px);border-bottom:1px solid #DFDDD2">
+    <div style="max-width:1080px;margin:0 auto;padding:15px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <a href="Home.dc.html" style="font-family:'Lora',serif;font-size:19px;font-weight:600;color:#222A31">Tugce Aldemir</a>
+      <div style="display:flex;gap:22px;font-size:14px;font-weight:600;flex-wrap:wrap;align-items:center">
+        <a href="Home.dc.html" style="color:#5A6470">Home</a>
+        <a href="Grants.dc.html" style="color:#5A6470">Grants</a>
+        <a href="Publications.dc.html" style="color:#3D5A73;border-bottom:2px solid #C97B5D;padding-bottom:2px">Publications</a>
+        <a href="Presentations.dc.html" style="color:#5A6470">Presentations</a>
+        <a href="Teaching.dc.html" style="color:#5A6470">Teaching</a>
+        <a href="Lab.dc.html" style="color:#5A6470">CoHALE Lab</a>
+        <a href="News.dc.html" style="color:#5A6470">News</a>
+        <a href="CV.dc.html" style="color:#5A6470">CV</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:900px;margin:0 auto;padding:56px 28px 8px">
+    <div style="font-size:12.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#7290A8;margin-bottom:14px">Publications</div>
+    <h1 style="font-family:'Lora',serif;font-size:40px;font-weight:600;margin:0 0 14px">Peer-reviewed publications</h1>
+    <p style="font-size:14.5px;line-height:1.7;color:#5A6470;margin:0 0 26px;max-width:68ch">Listed by date, most recent first. <span style="color:#A85F43">*</span> indicates work with a mentoring postdoctoral researcher; <span style="color:#A85F43">**</span> with a mentoring graduate student. Filter by category, search, or show only first-authored work.</p>
+    <input value="{{ q }}" onInput="{{ onQ }}" placeholder="Search by author, title, journal, or venue..." style="width:100%;box-sizing:border-box;padding:13px 18px;border:1.5px solid #DFDDD2;border-radius:8px;font-size:14.5px;font-family:'Nunito Sans',sans-serif;background:#FFFFFF;color:#222A31;outline:none" style-focus="border:1.5px solid #3D5A73">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 8px;align-items:center">
+      <sc-for list="{{ cats }}" as="c" hint-placeholder-count="5">
+        <button onClick="{{ c.onClick }}" style="border:1.5px solid {{ c.border }};background:{{ c.bg }};color:{{ c.color }};padding:8px 16px;border-radius:999px;font-size:13px;font-weight:700;font-family:'Nunito Sans',sans-serif;cursor:pointer">{{ c.label }} · {{ c.count }}</button>
+      </sc-for>
+      <div style="flex:1"></div>
+      <button onClick="{{ toggleFirst }}" style="border:1.5px solid {{ firstBorder }};background:{{ firstBg }};color:{{ firstColor }};padding:8px 16px;border-radius:999px;font-size:13px;font-weight:700;font-family:'Nunito Sans',sans-serif;cursor:pointer">{{ firstLabel }}</button>
+    </div>
+    <div style="font-size:12.5px;color:#8C949C;margin-bottom:4px">Showing {{ shownCount }} of {{ totalCount }}</div>
+  </div>
+  <div style="max-width:900px;margin:0 auto;padding:8px 28px 56px">
+    <div style="display:flex;flex-direction:column">
+      <sc-for list="{{ items }}" as="p" hint-placeholder-count="8">
+        <div style="display:grid;grid-template-columns:64px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid #DFDDD2">
+          <div style="font-family:'Lora',serif;font-size:17px;font-weight:700;color:#3D5A73;padding-top:1px">{{ p.year }}</div>
+          <div>
+            <div style="font-size:14.5px;line-height:1.65;color:#38434D">{{ p.authorsPre }}<span style="font-weight:800;color:#222A31">Aldemir, T.</span>{{ p.authorsPost }} {{ p.title }} <span style="font-style:italic">{{ p.venue }}</span>{{ p.tail }}</div>
+            <div style="display:flex;gap:12px;margin-top:7px;font-size:12px;align-items:center;flex-wrap:wrap">
+              <span style="background:{{ p.tagBg }};color:{{ p.tagColor }};font-weight:800;letter-spacing:0.8px;text-transform:uppercase;font-size:10.5px;padding:3px 10px;border-radius:3px">{{ p.type }}</span>
+              <sc-if value="{{ p.doi }}" hint-placeholder-val="{{ false }}"><a href="{{ p.doi }}" target="_blank" style="font-weight:700;font-size:12.5px">DOI ↗</a></sc-if>
+              <sc-if value="{{ p.impact }}" hint-placeholder-val="{{ false }}"><span style="color:#8C949C">Impact factor: {{ p.impact }}</span></sc-if>
+              <sc-if value="{{ p.award }}" hint-placeholder-val="{{ false }}"><span style="background:#F2E4DC;color:#A85F43;font-weight:700;padding:3px 10px;border-radius:3px;font-size:11.5px">{{ p.award }}</span></sc-if>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <p style="font-size:13.5px;color:#5A6470;margin:26px 0 0;line-height:1.6">Manuscripts under review and in preparation are listed in the <a href="uploads/Tugce_Aldemir_Curriculum_Vitae.pdf" target="_blank">full CV</a>.</p>
+  </div>
+  <div style="background:#2F475C;color:#C6D3DD">
+    <div style="max-width:1080px;margin:0 auto;padding:20px 28px;font-size:12.5px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <span>© 2026 Tugce Aldemir · <a href="Lab.dc.html" style="color:#E9BCA6">CoHALE Lab</a> · Texas A&amp;M University</span>
+      <a href="mailto:taldemir@tamu.edu" style="color:#C6D3DD" style-hover="color:#E9BCA6">taldemir@tamu.edu</a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { q: '', cat: 'All', first: false };
+  data() {
+    const J = 'Journal article', P = 'Proceeding', B = 'Book chapter', I = 'Invited & column';
+    return [
+      {t:J, y:'in press', s:2027, pre:'', post:', Bicer, A., Kilinc, S.*, Moon, J., & Kwok, M.', title:'(in press). Challenges, solutions, and PD needs for integrating AI: Insights from a two-week AI literacy module with preservice teachers.', venue:'Cogent Education', tail:'.', doi:null, impact:null},
+      {t:J, y:'2026', s:2026, pre:'Bicer, A., ', post:', Lee, U., Moon, J., Rambo Hernandez, K., & Sanders, M.', title:'(2026). How generative AI guided-professional development supports teachers\u2019 engagement with mathematical creativity, content knowledge, and pedagogical content knowledge.', venue:'ZDM: Mathematics Education', tail:'.', doi:'https://doi.org/10.1007/s11858-026-01816-1', impact:'3.8'},
+      {t:J, y:'2026', s:2026, pre:'Bicer, A., ', post:', Gooden, M., & Colak, M. A.', title:'(2026). Examining middle school students\u2019 experiences with opportunities for mathematical creativity.', venue:'Mathematics Education Research Journal', tail:'.', doi:'https://doi.org/10.1007/s13394-026-00594-z', impact:'2'},
+      {t:J, y:'2026', s:2026, pre:'', post:', Yoon, S., Shim, J., & Miller, K.', title:'(2026). Unpacking relational trust mechanisms in teacher-researcher co-design partnerships: Insights from a case study.', venue:'AERA Open, 12', tail:'.', doi:'https://doi.org/10.1177/23328584261448146', impact:'2.8'},
+      {t:P, y:'2026', s:2026, pre:'', post:', Kilinc, S.*, Sabanwar, V.**, Bicer, A., & Song, D.', title:'(2026). Disciplinary computational thinking in AI-mediated problem framing: A rural Ag-STEM context.', venue:'Proceedings of ICLS 2026', tail:' (pp. 2985-2988). International Society of the Learning Sciences.', doi:null, impact:null},
+      {t:P, y:'2026', s:2026, pre:'', post:', Kaliisa, R., Israel-Fishelson, R., Koren, N., Oswald, E., Blikstein, P., et al.', title:'(2026). Bridging gaps: Participatory design as a tool for social justice in education.', venue:'Proceedings of ICLS 2026', tail:' (pp. 2365-2374). International Society of the Learning Sciences.', doi:null, impact:null},
+      {t:P, y:'2026', s:2026, pre:'Sabanwar, V.**, ', post:', Kilinc, S.*, Bicer, A., & Song, D.', title:'(2026). How middle school students engage in computational literacies in an agricultural class.', venue:'Proceedings of ICLS 2026', tail:' (pp. 1657-1661). International Society of the Learning Sciences.', doi:null, impact:null},
+      {t:P, y:'2026', s:2026, pre:'Kilinc, S.*, ', post:', Sabanwar, V.**, Bicer, A., & Song, D.', title:'(2026). Planners and tinkerers: A comparative case study of K-12 students\u2019 engagement with data practices in an Ag-STEM.', venue:'Proceedings of ICLS 2026', tail:' (pp. 726-736). International Society of the Learning Sciences.', doi:null, impact:null},
+      {t:J, y:'2025', s:2025, pre:'Bicer, A., Quiroz, F., & ', post:'', title:'(2025). Revealing student processes in a mathematics classroom: An in-depth instrumental case study.', venue:'Learning, Culture and Social Interaction, 52', tail:', 1-19.', doi:'https://doi.org/10.1016/j.lcsi.2025.100905', impact:'2.1'},
+      {t:J, y:'2025', s:2025, pre:'', post:', Kilinc, S.*, Bicer, A., Grant, P.**, Davis, T., & Sweany, N. W.', title:'(2025). Intelligent-TPACK in practice: Design and evidence from a three-week teacher preparation module.', venue:'Computers and Education Open', tail:', 100306.', doi:'https://doi.org/10.1016/j.caeo.2025.100306', impact:'5.7'},
+      {t:J, y:'2025', s:2025, pre:'', post:', Bicer, A., Kilinc, S.*, Moon, J., & Kwok, M.', title:'(2025). Exploring emergent AI-TPACK competencies in a two-week AI literacy module for preservice teachers.', venue:'Teaching and Teacher Education, 168', tail:', 105231.', doi:'https://doi.org/10.1016/j.tate.2025.105231', impact:'3.9'},
+      {t:J, y:'2025', s:2025, pre:'', post:', Moon, J., Bicer, A., Byun, G., Perez, C. M.**, & Sabanwar, V.**', title:'(2025). How non-CS preservice teachers conceptualize and engage with computational thinking through 3D game design: Insights from an XR-enhanced maker experience.', venue:'Computers & Education: X Reality, 6', tail:', 100099.', doi:'https://doi.org/10.1016/j.cexr.2025.100099', impact:'5.9'},
+      {t:J, y:'2025', s:2025, pre:'Bicer, A., ', post:', Davis, T. J., & Young, J.', title:'(2025). Exploring the transferability of STEM PBL instructional principles from higher education to K-12 classrooms.', venue:'Education Sciences, 5(1)', tail:', 39.', doi:'https://doi.org/10.3390/educsci15010039', impact:'3.5'},
+      {t:P, y:'2025', s:2025, pre:'Kilinc, S.*, ', post:', Sabanwar, V.**, Bicer, A., & Song, D.', title:'(2025). AI chatbot coaching for elevating student research.', venue:'Proceedings of the 2025 ACM Conference on International Computing Education Research V. 2', tail:' (pp. 1-2).', doi:null, impact:null},
+      {t:J, y:'2024', s:2024, pre:'Borge, M., Smith, B., & ', post:'', title:'(2024). Using generative AI as a simulation to support higher-order thinking.', venue:'International Journal of Computer-Supported Collaborative Learning, 19', tail:', 479-532.', doi:'https://doi.org/10.1007/s11412-024-09437-0', impact:'6.8'},
+      {t:J, y:'2024', s:2024, pre:'Bicer, A., ', post:', Krall, G., Quiroz, F., Chamberlin, S., Nelson, J. L., Lee, Y., & Kwon, H.', title:'(2024). Exploring creativity in mathematics assessment: An analysis of standardized tests.', venue:'Thinking Skills and Creativity', tail:', 101652.', doi:'https://doi.org/10.1016/j.tsc.2024.101652', impact:'5.3'},
+      {t:B, y:'2024', s:2024, pre:'Atas, A. H., Celik, B., & ', post:'', title:'(2024). Enhancing educational assessment through GenAI: Leveraging revised Bloom\u2019s taxonomy for question generation with ChatGPT.', venue:'Generative artificial intelligence applications: Holistic reflections from the educational landscape', tail:'. S. G. Turan & H. Tinmaz (Eds.).', doi:null, impact:null},
+      {t:P, y:'2024', s:2024, pre:'', post:'', title:'(2024). Navigating charged topics: Analyzing social-emotional talk in diverse online teams.', venue:'Proceedings of ICLS 2024', tail:'. Buffalo, USA: International Society of the Learning Sciences.', doi:null, impact:null},
+      {t:P, y:'2024', s:2024, pre:'', post:', Shim, J., & Yoon, S.', title:'(2024). Teachers as co-thinkers and facilitators: Unpacking teacher-student dynamics in co-design partnerships.', venue:'Proceedings of ICLS 2024', tail:'. Buffalo, USA: International Society of the Learning Sciences.', doi:null, impact:null},
+      {t:P, y:'2024', s:2024, pre:'', post:', Yoon, S., & Shim, J.', title:'(2024). Empowering voices: Promoting equitable participation in student-inclusive co-design research-practice partnerships.', venue:'Proceedings of ICLS 2024', tail:'. Buffalo, USA: International Society of the Learning Sciences.', doi:null, impact:null},
+      {t:P, y:'2023', s:2023, pre:'', post:', Yoon, S., Miller, K., & Shim, J.', title:'(2023). Teachers as co-designers: Forming equitable participation through the lens of relational trust.', venue:'Proceedings of ICLS 2023', tail:'. Montr\u00e9al, Canada: International Society of the Learning Sciences.', doi:null, impact:null},
+      {t:P, y:'2023', s:2023, pre:'', post:', Borge, M., & Soto, J.', title:'(2023). How students talk about race and identity: Unpacking social-emotional talk.', venue:'Proceedings of CSCL 2023', tail:'. Montr\u00e9al, Canada: International Society of the Learning Sciences.', doi:null, impact:null},
+      {t:J, y:'2022', s:2022, pre:'', post:', Davidesco, I., Kelly, S., Glaser, N., Kyle, A. M., Montrosse-Moorhead, B., & Lane, K.', title:'(2022). Investigating students\u2019 learning experiences in a neural engineering integrated STEM high school curriculum.', venue:'Education Sciences, 12(10)', tail:', 705.', doi:'https://doi.org/10.3390/educsci12100705', impact:'3.5'},
+      {t:J, y:'2022', s:2022, pre:'', post:', Borge, M., & Soto, J.', title:'(2022). Shared meaning-making in online intergroup discussions around sensitive topics.', venue:'International Journal of Computer-Supported Collaborative Learning, 17(3)', tail:', 1-36.', doi:'https://doi.org/10.1007/s11412-022-09375-9', impact:'6.8'},
+      {t:J, y:'2022', s:2022, pre:'Borge, M., ', post:', & Xia, Y.', title:'(2022). How teams learn to regulate collaborative processes with technological support.', venue:'Educational Technology Research and Development, 70', tail:', 661-690.', doi:'https://doi.org/10.1007/s11423-022-10103-1', impact:'5.6'},
+      {t:J, y:'2022', s:2022, pre:'Borge, M., Soto, J., ', post:', & Mena, J.', title:'(2022). Building multicultural competence by fostering collaborative skills.', venue:'Teaching of Psychology, 49(1)', tail:', 85-92.', doi:'https://doi.org/10.1177/0098628320977421', impact:'1.7'},
+      {t:B, y:'2022', s:2022, pre:'Celik, B., Atas, A.-H., & ', post:'', title:'(2022). Sesli d\u00fc\u015f\u00fcnme tekni\u011fi [Think aloud technique].', venue:'Sosyal bilimlerde nitel ara\u015ft\u0131rmalar ve eylem ara\u015ft\u0131rmalar\u0131 [Qualitative research and action research in social sciences]', tail:' (chapter 4, pp. 81-119). S. Toraman-Turk (Ed.).', doi:null, impact:null},
+      {t:P, y:'2022', s:2022, pre:'', post:', Borge, M., & Soto, J.', title:'(2022). Perspective-taking as a tool to examine engaging in differences during shared meaning-making.', venue:'Proceedings of CSCL 2022', tail:' (pp. 463-466). Hiroshima, Japan: International Society of the Learning Sciences.', doi:null, impact:null},
+      {t:P, y:'2022', s:2022, pre:'Borge, S., ', post:', & Soto, J.', title:'(2022). Towards a framework for multicultural collaborative competence.', venue:'Proceedings of CSCL 2022', tail:' (pp. 521-523). Hiroshima, Japan: International Society of the Learning Sciences.', doi:null, impact:null},
+      {t:P, y:'2021', s:2021, pre:'', post:', Borge, M., & Xia, Y.', title:'(2021). Exploration of facilitation strategies for intergroup dialogues in a CSCL context.', venue:'Proceedings of CSCL 2021', tail:' (pp. 131-138). Bochum, Germany: International Society of the Learning Sciences.', doi:null, impact:null},
+      {t:J, y:'2020', s:2020, pre:'Russell, S., Ramsay, C., Lonsinger, Z., Davis, S., & ', post:'', title:'(2020). The Moral Moments Project: Where technology and compassion meet.', venue:'EDUCAUSE Review', tail:'.', doi:'https://er.educause.edu/articles/2020/6/the-moral-moments-project-where-technology-and-compassion-meet', impact:null},
+      {t:J, y:'2020', s:2020, pre:'Shearer, R., ', post:', Hitchcock, J., Resig, J., Driver, J., & Kohler, M.', title:'(2020). What students want: A vision of a future online learning experience grounded in Distance Education Theory.', venue:'American Journal of Distance Education, 34(1)', tail:', 36-52.', doi:'https://doi.org/10.1080/08923647.2019.1706019', impact:'1.3'},
+      {t:B, y:'2020', s:2020, pre:'Gregg, A., Reid, R., ', post:', Gray, J., Frederick, M., & Garbrick, A.', title:'(2020). Think-aloud observations to improve online course design: A case example and \u201chow-to\u201d guide.', venue:'Learner and user experience research: An introduction for the field of learning design & technology', tail:' (chapter 15). M. Schmidt, A. A. Tawfik, I. Jahnke, & Y. Earnshaw (Eds.).', doi:null, impact:null},
+      {t:P, y:'2020', s:2020, pre:'', post:', & Borge, M.', title:'(2020). Unpacking collaborative sense-making: The role of reflective accuracy in collaborative process quality.', venue:'Proceedings of ICLS 2020, Volume 3', tail:' (pp. 1709-1712). Nashville, TN: International Society of the Learning Sciences.', doi:null, impact:null},
+      {t:P, y:'2019', s:2019, pre:'Borge, M., ', post:', & Xia, Y.', title:'(2019). Unpacking socio-metacognitive sense-making patterns to support collaborative discourse.', venue:'Proceedings of CSCL 2019, Volume 1', tail:' (pp. 320-327). Lyon, France: International Society of the Learning Sciences.', doi:null, impact:null},
+      {t:B, y:'2019', s:2019, pre:'', post:', Atas, A. H., & Celik, B.', title:'(2019). A systematic design model for gamified learning environments: GELD model.', venue:'Design, motivation, and frameworks in game-based learning', tail:' (pp. 30-56). W. Tan (Ed.). Hershey, PA: IGI Global.', doi:'https://doi.org/10.4018/978-1-5225-6026-5.ch002', impact:null},
+      {t:J, y:'2018', s:2018, pre:'', post:', Celik, B., & Kaplan, G.', title:'(2018). A qualitative investigation of student perceptions of game elements in a gamified course.', venue:'Computers in Human Behavior, 78', tail:', 235-254.', doi:'https://doi.org/10.1016/j.chb.2017.10.001', impact:'12.2', award:'Best Qualitative Article Award (2nd place), AECT'},
+      {t:J, y:'2018', s:2018, pre:'Gregg, A., Reid, R., ', post:', Garbrick, A., Frederick, M., & Gray, J.', title:'(2018). Improving online course design with think-aloud observations: A \u201chow-to\u201d guide for instructional designers for conducting UX testing.', venue:'Journal of Applied Instructional Design (JAID), 7(2)', tail:', 17-26.', doi:null, impact:null},
+      {t:J, y:'2018', s:2018, pre:'Romero-Hall, E., ', post:', Colorado-Resa, J., Dickson-Deane, C., Watson, G., & Sadaf, A.', title:'(2018). Undisclosed stories of instructional design female scholars in academia.', venue:'Women\u2019s Studies International Forum, 71', tail:', 19-28.', doi:'https://doi.org/10.1016/j.wsif.2018.09.004', impact:'2.0'},
+      {t:I, y:'2018', s:2018, pre:'Anderle, J. S., ', post:', Resig, J., McArthur, A., Sacak, B., & DuBoff, B.', title:'(2018). Expectations and experiences of the AECT leadership internship program.', venue:'TechTrends', tail:', 1-3. (Invited article)', doi:null, impact:null},
+      {t:I, y:'2018', s:2018, pre:'Turcotte, N., Giri, S., Vasconcelos, L., Essmiller, K., & ', post:'', title:'(2018). The graduate student assembly: Pathways to leadership.', venue:'TechTrends, 62(5)', tail:', 427-428. (Column)', doi:null, impact:null},
+      {t:I, y:'2017', s:2017, pre:'', post:', & Park, E.', title:'(2017). Student visa approved; beam me up, Scotty! Being a legal alien in American graduate school.', venue:'TechTrends, 61(3)', tail:', 210. (Column)', doi:null, impact:null},
+      {t:P, y:'2016', s:2016, pre:'', post:', Celik, B., & Akilli, G. K.', title:'(2016). An evaluation study of a classroom management system: Usability and teacher experiences and evaluations.', venue:'Proceedings of SITE 2016', tail:' (pp. 1754-1759). AACE.', doi:null, impact:null},
+      {t:P, y:'2015', s:2015, pre:'', post:', & Kaplan, G.', title:'(2015). Students\u2019 opinions and perceptions about a gamified online course: A qualitative study.', venue:'Proceedings of AECT 2015', tail:' (pp. 1-11). Indianapolis, USA.', doi:null, impact:null}
+    ];
+  }
+  renderVals() {
+    const all = this.data();
+    const { q, cat, first } = this.state;
+    const catDefs = [
+      {label:'All', match: () => true},
+      {label:'Journal articles', match: p => p.t === 'Journal article'},
+      {label:'Proceedings', match: p => p.t === 'Proceeding'},
+      {label:'Book chapters', match: p => p.t === 'Book chapter'},
+      {label:'Invited & columns', match: p => p.t === 'Invited & column'}
+    ];
+    const ql = q.trim().toLowerCase();
+    const search = p => !ql || (p.pre + 'Aldemir, T.' + p.post + ' ' + p.title + ' ' + p.venue).toLowerCase().includes(ql);
+    const tagStyles = {'Journal article':['#E5EBF0','#3D5A73'],'Proceeding':['#F2E4DC','#A85F43'],'Book chapter':['#EEEDE6','#5A6470'],'Invited & column':['#EEEDE6','#5A6470']};
+    const activeDef = catDefs.find(c => c.label === cat) || catDefs[0];
+    const items = all
+      .filter(activeDef.match).filter(search).filter(p => !first || p.pre === '')
+      .sort((a,b) => b.s - a.s)
+      .map((p,i) => ({...p, key:i, type:p.t, year:p.y, authorsPre:p.pre, authorsPost:p.post, tagBg:tagStyles[p.t][0], tagColor:tagStyles[p.t][1]}));
+    const cats = catDefs.map(c => {
+      const count = all.filter(c.match).filter(p => !first || p.pre === '').length;
+      const active = c.label === cat;
+      return {label:c.label, count, onClick:() => this.setState({cat:c.label}),
+        bg: active ? '#3D5A73' : '#FFFFFF', color: active ? '#F8F7F3' : '#5A6470', border: active ? '#3D5A73' : '#DFDDD2'};
+    });
+    return {
+      q, onQ: e => this.setState({q: e.target.value}),
+      cats, items, shownCount: items.length, totalCount: all.length,
+      toggleFirst: () => this.setState(s => ({first: !s.first})),
+      firstLabel: first ? '✓ First author only' : 'First author only',
+      firstBg: first ? '#A85F43' : '#FFFFFF', firstColor: first ? '#F8F7F3' : '#5A6470', firstBorder: first ? '#A85F43' : '#DFDDD2'
+    };
+  }
+}
+</script>
+</body>
+</html>
