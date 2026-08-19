@@ -1,0 +1,215 @@
+/* Mobile-only responsive layer for Tugce Aldemir's academic website.
+   Desktop styling remains controlled by the original inline styles. */
+
+html { -webkit-text-size-adjust: 100%; }
+img, svg { max-width: 100%; }
+
+@media (max-width: 760px) {
+  body { overflow-x: hidden; }
+
+  /* Header: keep all destinations available without a 3-line wrapped menu. */
+  .site-header-inner {
+    padding: 12px 18px !important;
+    gap: 8px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .site-brand {
+    align-self: flex-start;
+    font-size: 18px !important;
+  }
+  .site-nav {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap !important;
+    gap: 16px !important;
+    padding: 3px 0 4px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .site-nav::-webkit-scrollbar { display: none; }
+  .site-nav a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+
+  .page-title {
+    font-size: 34px !important;
+    line-height: 1.15 !important;
+    overflow-wrap: anywhere;
+  }
+
+  /* HOME */
+  .home-hero {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    padding-top: 38px !important;
+    padding-bottom: 30px !important;
+  }
+  [data-screen-label="Home"] .home-hero .page-title {
+    font-size: 36px !important;
+  }
+  [data-screen-label="Home"] .home-hero > div > div:first-child {
+    letter-spacing: 1.7px !important;
+    line-height: 1.5 !important;
+  }
+  [data-screen-label="Home"] .home-hero > div > div:nth-child(3) {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+  }
+  [data-screen-label="Home"] .home-hero p {
+    font-size: 17px !important;
+    line-height: 1.6 !important;
+  }
+  .home-headshot {
+    width: min(280px, 100%) !important;
+    height: 340px !important;
+    margin: 0 auto !important;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .stats-grid > div {
+    padding: 20px 10px !important;
+    border-right: 0 !important;
+  }
+  .stats-grid > div:nth-child(odd) {
+    border-right: 1px solid #ECEAE0 !important;
+  }
+  .stats-grid > div:nth-child(-n+2) {
+    border-bottom: 1px solid #ECEAE0 !important;
+  }
+  .home-news-grid,
+  .home-about-grid,
+  .home-strands-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .home-news-grid { gap: 14px !important; }
+  .home-news-featured { grid-row: auto !important; }
+  .home-about-grid { gap: 8px !important; }
+  .home-strands-grid { gap: 24px !important; }
+
+  /* GRANTS */
+  .grants-featured {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    padding: 26px 24px !important;
+  }
+  .grants-featured-amount {
+    border-left: 0 !important;
+    border-top: 1px solid rgba(248,247,243,0.25) !important;
+    padding-left: 0 !important;
+    padding-top: 18px !important;
+    text-align: left !important;
+  }
+  .grant-table-header { display: none !important; }
+  .grant-row {
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+    padding: 18px 0 !important;
+  }
+  .grant-row > span { min-width: 0; }
+  .grant-row > span:nth-child(2) { margin-top: 5px; }
+  .grant-row > span:nth-child(2)::before,
+  .grant-row > span:nth-child(3)::before,
+  .grant-row > span:nth-child(4)::before {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    color: #8C949C;
+    margin-right: 6px;
+  }
+  .grant-row > span:nth-child(2)::before { content: "Agency"; }
+  .grant-row > span:nth-child(3)::before { content: "Role"; }
+  .grant-row > span:nth-child(4)::before { content: "Amount"; }
+  .grant-row > span:nth-child(4) { text-align: left !important; }
+  .two-card-grid { grid-template-columns: 1fr !important; }
+
+  /* TEACHING */
+  .courses-grid,
+  .curriculum-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .courses-grid { gap: 16px !important; }
+  .curriculum-grid { gap: 14px !important; }
+  .earlier-teaching-row {
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+  }
+
+  /* LAB */
+  .lab-focus-grid { grid-template-columns: 1fr !important; }
+  .lab-project-row {
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+  }
+  .lab-join-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  /* NEWS */
+  .news-job-card {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    padding: 24px 22px !important;
+  }
+  .news-row {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    padding: 24px 0 !important;
+  }
+
+  /* CV */
+  .cv-row {
+    grid-template-columns: 1fr !important;
+    gap: 3px !important;
+  }
+
+  /* PUBLICATIONS + PRESENTATIONS */
+  .filter-spacer { display: none !important; }
+  .filter-bar { align-items: stretch !important; }
+  .filter-bar button { min-height: 40px; }
+  [data-screen-label="Publications"] input,
+  [data-screen-label="Presentations"] input {
+    font-size: 16px !important; /* prevents iOS focus zoom */
+  }
+  .list-row {
+    grid-template-columns: 1fr !important;
+    gap: 5px !important;
+  }
+  .list-row > div:first-child {
+    font-size: 15px !important;
+    padding-top: 0 !important;
+  }
+
+  .mobile-full-button {
+    width: 100% !important;
+    box-sizing: border-box;
+    text-align: center !important;
+    white-space: normal !important;
+  }
+}
+
+@media (max-width: 430px) {
+  /* Slightly reclaim horizontal space on narrow phones. */
+  [data-screen-label="Home"] > div:not(.site-header),
+  [data-screen-label="Grants"] > div:not(.site-header),
+  [data-screen-label="Course Design and Teaching"] > div:not(.site-header),
+  [data-screen-label="CoHALE Lab"] > div:not(.site-header),
+  [data-screen-label="News"] > div:not(.site-header),
+  [data-screen-label="CV"] > div:not(.site-header),
+  [data-screen-label="Publications"] > div:not(.site-header),
+  [data-screen-label="Presentations"] > div:not(.site-header) {
+    /* Original section paddings are 24-28px. Specific layout rules above do the
+       heavy lifting; this breakpoint keeps narrow screens from feeling cramped. */
+  }
+
+  .page-title { font-size: 32px !important; }
+  [data-screen-label="Home"] .home-hero .page-title { font-size: 34px !important; }
+  .stats-grid > div { padding: 18px 8px !important; }
+}
