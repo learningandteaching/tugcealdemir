@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 250" width="1040" height="250" role="img" aria-label="CoHALE Lab — Collaborative Human-AI Learning Ecologies for STEM+C">
+  <defs>
+    
+    <linearGradient id="cohaleArc" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ED8B5E"></stop>
+      <stop offset="0.55" stop-color="#4F9C8B"></stop>
+      <stop offset="1" stop-color="#15726B"></stop>
+    </linearGradient>
+  </defs>
+
+  
+  <g transform="translate(44,34) scale(0.86)">
+    <circle cx="100" cy="100" r="62" fill="none" stroke="url(#cohaleArc)" stroke-width="7.5" stroke-linecap="round" stroke-dasharray="270.53 119.03" stroke-dashoffset="59.51"></circle>
+    <circle cx="137" cy="100" r="6.5" fill="#ED8B5E"></circle>
+    <circle cx="148" cy="100" r="6.5" fill="#15726B" fill-opacity="0.92"></circle>
+  </g>
+
+  
+  <line x1="238" y1="58" x2="238" y2="196" stroke="#E7E1D8" stroke-width="2"></line>
+
+  
+  <text class="wm" x="272" y="146" font-size="104" font-weight="500" letter-spacing="1" fill="#223039">
+    <tspan fill="#15726B">Co</tspan><tspan>HALE</tspan><tspan dx="18" font-size="44" font-weight="400" fill="#55636B">Lab</tspan>
+  </text>
+
+  
+  <text class="tag" x="276" y="192" font-size="18" font-weight="300" letter-spacing="2.5" fill="#55636B">COLLABORATIVE HUMAN-AI LEARNING ECOLOGIES FOR STEM+C</text>
+</svg>
