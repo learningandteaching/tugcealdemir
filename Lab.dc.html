@@ -24,26 +24,40 @@
 <style>
 body{margin:0;background:#F8F7F3;color:#222A31;font-family:'Nunito Sans',sans-serif;-webkit-font-smoothing:antialiased}
 a{color:#3D5A73;text-decoration:none}
-a:hover{color:#C97B5D}
+a:hover{color:#A85F43}
+
+/* --- Lab page sections --- */
+.lab-strand-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.lab-strand{border-left:3px solid #DFDDD2;padding:2px 0 2px 16px;font-size:14px;line-height:1.65;color:#5A6470}
+.lab-strand strong{display:block;font-family:'Lora',serif;font-size:16px;font-weight:600;color:#222A31;margin-bottom:4px}
+.lab-project-row{display:grid;grid-template-columns:150px 1fr;gap:20px;font-size:14.5px;line-height:1.65}
+.lab-project-status{font-weight:600;color:#3D5A73}
+.lab-project-status span{display:block;font-weight:500;font-size:13px;color:#5A6470;margin-top:2px}
+@media (max-width:760px){
+  .lab-strand-strip{grid-template-columns:1fr}
+  .lab-project-row{grid-template-columns:1fr;gap:6px}
+}
 </style>
 <link rel="stylesheet" href="./responsive.css">
 </helmet>
 <div data-screen-label="CoHALE Lab">
-  <div class="site-header" style="position:sticky;top:0;z-index:50;background:rgba(251,249,244,0.93);backdrop-filter:blur(8px);border-bottom:1px solid #DFDDD2">
-    <div class="site-header-inner" style="max-width:1100px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
-      <a class="site-brand" href="Home.dc.html" style="font-family:'Lora',serif;font-size:21px;font-weight:600;color:#222A31">Tugce Aldemir<span style="color:#3D5A73">.</span></a>
-      <div class="site-nav" style="display:flex;gap:24px;font-size:14px;font-weight:500;flex-wrap:wrap">
-        <a href="Home.dc.html" style="color:#5A6470">Home</a>
-        <a href="Grants.dc.html" style="color:#5A6470">Grants</a>
-        <a href="Publications.dc.html" style="color:#5A6470">Publications</a>
-        <a href="Presentations.dc.html" style="color:#5A6470">Presentations</a>
-        <a href="Teaching.dc.html" style="color:#5A6470">Teaching</a>
+
+  <div class="site-header" style="position:sticky;top:0;z-index:50;background:rgba(248,247,243,0.95);backdrop-filter:blur(8px);border-bottom:1px solid #DFDDD2">
+    <div class="site-header-inner" style="max-width:1080px;margin:0 auto;padding:15px 28px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+      <a class="site-brand" href="Home.dc.html" style="font-family:'Lora',serif;font-size:19px;font-weight:600;color:#222A31">Tugce Aldemir</a>
+      <div class="site-nav" style="display:flex;gap:22px;font-size:14px;font-weight:600;flex-wrap:wrap;align-items:center">
+        <a href="Home.dc.html" style="color:#5A6470" style-hover="color:#3D5A73">Home</a>
+        <a href="Grants.dc.html" style="color:#5A6470" style-hover="color:#3D5A73">Grants</a>
+        <a href="Publications.dc.html" style="color:#5A6470" style-hover="color:#3D5A73">Publications</a>
+        <a href="Presentations.dc.html" style="color:#5A6470" style-hover="color:#3D5A73">Presentations</a>
+        <a href="Teaching.dc.html" style="color:#5A6470" style-hover="color:#3D5A73">Teaching</a>
         <a href="Lab.dc.html" style="color:#3D5A73;border-bottom:2px solid #C97B5D;padding-bottom:2px">CoHALE Lab</a>
-        <a href="News.dc.html" style="color:#5A6470">News</a>
-        <a href="CV.dc.html" style="color:#5A6470">CV</a>
+        <a href="News.dc.html" style="color:#5A6470" style-hover="color:#3D5A73">News</a>
+        <a href="CV.dc.html" style="background:#3D5A73;color:#F8F7F3;padding:8px 18px;border-radius:5px" style-hover="background:#A85F43;color:#F8F7F3">CV</a>
       </div>
     </div>
   </div>
+
   <div style="border-bottom:1px solid #DFDDD2">
     <div style="text-align:center;padding:56px 24px 48px">
       <svg viewBox="0 0 200 200" style="width:92px;height:92px;margin:0 auto;display:block"><defs><linearGradient id="cohaleArcHero" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ED8B5E"></stop><stop offset="0.55" stop-color="#4F9C8B"></stop><stop offset="1" stop-color="#15726B"></stop></linearGradient></defs><circle cx="100" cy="100" r="62" fill="none" stroke="url(#cohaleArcHero)" stroke-width="7.5" stroke-linecap="round" stroke-dasharray="270.53 119.03" stroke-dashoffset="59.51"></circle><circle cx="137" cy="100" r="6.5" fill="#ED8B5E"></circle><circle cx="148" cy="100" r="6.5" fill="#15726B" fill-opacity="0.92"></circle></svg>
@@ -51,61 +65,105 @@ a:hover{color:#C97B5D}
       <div style="font-size:12.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#5A6470;margin-top:12px">Collaborative Human-AI Learning Ecologies for STEM+C</div>
     </div>
   </div>
+
   <div style="max-width:900px;margin:0 auto;padding:56px 24px 40px">
-    <h1 class="page-title" style="font-family:'Lora',serif;font-size:38px;font-weight:600;margin:0 0 18px">Collaborative Human-AI Learning Ecologies Lab</h1>
-    <p style="font-size:16.5px;line-height:1.75;color:#38434D;margin:0 0 14px;max-width:66ch;text-wrap:pretty">The CoHALE Lab studies how learners, teachers, and AI systems think and work together across STEM and computing contexts. We design AI-mentored learning environments, study them in real classrooms with partner teachers, and build theory about what productive human-AI collaboration looks like in education.</p>
-    <div style="max-width:900px;margin:0 auto;padding:0 24px 48px">
+    <h1 class="page-title" style="font-family:'Lora',serif;font-size:38px;font-weight:600;margin:0 0 18px;line-height:1.2">Collaborative Human-AI Learning Ecologies for STEM+C Lab</h1>
+    <p style="font-size:16.5px;line-height:1.75;color:#38434D;margin:0;max-width:66ch;text-wrap:pretty">The CoHALE Lab designs and studies collaborative human-AI learning ecologies for STEM and computing. We build learning environments in which students, teachers, and AI systems work on disciplinary problems together &ndash; sensor-based inquiry in school gardens, generative-AI partners in teachers' professional learning, XR maker experiences in teacher preparation &ndash; study them in classrooms and courses with partner teachers, and build theory about what an AI participant must carry, and what must stay with people, for that work to hold up after the research team leaves.</p>
+  </div>
+
+  <div style="max-width:900px;margin:0 auto;padding:0 24px 52px">
+    <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:20px">
+      <h2 style="font-family:'Lora',serif;font-size:22px;font-weight:600;margin:0">Three research strands</h2>
+      <div style="flex:1;height:1px;background:#DFDDD2"></div>
+    </div>
+    <div class="lab-strand-strip">
+      <div class="lab-strand" style="border-left-color:#3D5A73"><strong>Disciplinary computational practices</strong>Computational thinking, data practice, and AI literacy learned inside a subject.</div>
+      <div class="lab-strand" style="border-left-color:#C97B5D"><strong>High-quality collaboration</strong>Whether students, teachers, and AI partners can recognize and improve their joint work.</div>
+      <div class="lab-strand" style="border-left-color:#5E7A52"><strong>AI and emerging technologies as participants</strong>What a technology must carry, and what must stay with people.</div>
+    </div>
+  </div>
+
+  <div style="max-width:900px;margin:0 auto;padding:0 24px 56px">
+    <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:20px">
+      <h2 style="font-family:'Lora',serif;font-size:26px;font-weight:600;margin:0">How we work</h2>
+      <div style="flex:1;height:1px;background:#DFDDD2"></div>
+    </div>
     <div class="lab-focus-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
       <div style="border-top:3px solid #C97B5D;background:#FFFFFF;border-left:1px solid #DFDDD2;border-right:1px solid #DFDDD2;border-bottom:1px solid #DFDDD2;border-radius:0 0 6px 6px;padding:22px">
-        <div style="font-family:'Lora',serif;font-size:18px;font-weight:600;margin-bottom:8px">STEM+C learning</div>
-        <div style="font-size:14px;line-height:1.65;color:#5A6470">AI-guided, authentic scientific inquiry in K-12 classrooms, from agricultural science to XR-enhanced maker experiences.</div>
+        <div style="font-family:'Lora',serif;font-size:18px;font-weight:600;margin-bottom:8px">Co-design with teachers</div>
+        <div style="font-size:14px;line-height:1.65;color:#5A6470">Partner teachers co-design the units and modules they will teach and take ownership of them as a project matures.</div>
       </div>
       <div style="border-top:3px solid #7290A8;background:#FFFFFF;border-left:1px solid #DFDDD2;border-right:1px solid #DFDDD2;border-bottom:1px solid #DFDDD2;border-radius:0 0 6px 6px;padding:22px">
-        <div style="font-family:'Lora',serif;font-size:18px;font-weight:600;margin-bottom:8px">Computational literacies &amp; participation</div>
-        <div style="font-size:14px;line-height:1.65;color:#5A6470">Disciplinary computational thinking, data practices, and equitable participation, with a focus on rural schools.</div>
+        <div style="font-family:'Lora',serif;font-size:18px;font-weight:600;margin-bottom:8px">Design-based research in real settings</div>
+        <div style="font-size:14px;line-height:1.65;color:#5A6470">Iterative cycles in classrooms, courses, and professional learning, with mixed methods &ndash; surveys, student and teacher artifacts, classroom video, AI interaction logs, interviews.</div>
       </div>
       <div style="border-top:3px solid #3D5A73;background:#FFFFFF;border-left:1px solid #DFDDD2;border-right:1px solid #DFDDD2;border-bottom:1px solid #DFDDD2;border-radius:0 0 6px 6px;padding:22px">
-        <div style="font-family:'Lora',serif;font-size:18px;font-weight:600;margin-bottom:8px">AI literacy</div>
-        <div style="font-size:14px;line-height:1.65;color:#5A6470">AI literacy and AI-TPACK for preservice and in-service teachers, and safeguards for responsible AI integration.</div>
+        <div style="font-family:'Lora',serif;font-size:18px;font-weight:600;margin-bottom:8px">Artifacts that scaffold and measure</div>
+        <div style="font-size:14px;line-height:1.65;color:#5A6470">Competence models built into rubrics, matrices, and AI mentors that both guide the work and make it observable.</div>
       </div>
     </div>
   </div>
+
   <div style="background:#EEEDE6;border-top:1px solid #DFDDD2">
     <div style="max-width:900px;margin:0 auto;padding:48px 24px">
-      <h2 style="font-family:'Lora',serif;font-size:26px;font-weight:600;margin:0 0 20px">Active projects</h2>
-      <div style="display:flex;flex-direction:column;gap:16px">
-        <div class="lab-project-row" style="display:grid;grid-template-columns:110px 1fr;gap:20px;font-size:14.5px;line-height:1.65">
-          <div style="font-weight:600;color:#3D5A73">2026–2031</div>
-          <div><span style="font-weight:600">3AforCT</span> (NSF CAREER, $1.6M), AI-guided, authentic Ag-STEM inquiry for cultivating computational thinking in rural middle schools.</div>
+      <h2 style="font-family:'Lora',serif;font-size:26px;font-weight:600;margin:0 0 20px">Projects</h2>
+      <div style="display:flex;flex-direction:column;gap:22px">
+
+        <div class="lab-project-row">
+          <div class="lab-project-status">NSF CAREER<span>2026&ndash;2031 &middot; PI</span></div>
+          <div><span style="font-weight:600">3AforCT.</span> Sensor-based school-garden inquiry in two rural Texas districts, carrying data practices across the inquiry cycle; an AI peer mentor that models expert reasoning and fades; teachers who co-design the unit they teach. Built on two pilot grants (2024&ndash;2026): AIM4Rural (Emerge, $49K) and AI-Enhanced CT &amp; Agricultural Science (Catapult, $30K).</div>
         </div>
-        <div class="lab-project-row" style="display:grid;grid-template-columns:110px 1fr;gap:20px;font-size:14.5px;line-height:1.65">
-          <div style="font-weight:600;color:#3D5A73">2026–2031</div>
-          <div><span style="font-weight:600">AI-Driven Professional Learning</span> (NSF, $2M, Co-PI), strengthening pre-service teachers' content knowledge, PCK, and mathematical creativity.</div>
+
+        <div class="lab-project-row">
+          <div class="lab-project-status">NSF IUSE<span>2026&ndash;2031 &middot; Co-PI</span></div>
+          <div><span style="font-weight:600">AI-Driven Professional Learning.</span> A generative-AI cognitive partner that scaffolds preservice teachers through creativity-directed mathematics tasks, implemented across eight teacher preparation programs.</div>
         </div>
-        <div class="lab-project-row" style="display:grid;grid-template-columns:110px 1fr;gap:20px;font-size:14.5px;line-height:1.65">
-          <div style="font-weight:600;color:#3D5A73">2024–2026</div>
-          <div><span style="font-weight:600">AIM4Rural</span> (Emerge Grant, $49K), artificial intelligence mentorship for rural education.</div>
+
+        <div class="lab-project-row">
+          <div class="lab-project-status">Design studies<span>ongoing</span></div>
+          <div><span style="font-weight:600">Computing and AI in teacher preparation.</span> XR maker experiences and AI-literacy modules through which preservice teachers take up computational and AI practices inside their own subjects, working with and supported by the technologies they will teach with. Recent work: a diagnostic framework for reading makerspace process data as evidence of computational thinking (<span style="font-style:italic">Interactive Learning Environments</span>, 2026); safeguards and professional learning needs for AI integration (<span style="font-style:italic">Cogent Education</span>, 2026).</div>
         </div>
-        <div class="lab-project-row" style="display:grid;grid-template-columns:110px 1fr;gap:20px;font-size:14.5px;line-height:1.65">
-          <div style="font-weight:600;color:#3D5A73">2024–2026</div>
-          <div><span style="font-weight:600">AI-Enhanced CT &amp; Agricultural Science</span> (Catapult Grant, $30K), computational thinking through agricultural science in rural schools.</div>
+
+        <div class="lab-project-row">
+          <div class="lab-project-status">CSCL line<span>ongoing</span></div>
+          <div><span style="font-weight:600">Collaborative competence and the technologies that support it.</span> Whether teams can recognize and improve their own joint work &ndash; from a system that returned to student groups the criteria their discussions were judged by, to a chat-based simulation partner for practicing collective sensemaking &ndash; and what models of collaborative quality miss when the talk turns to identity and difference.</div>
         </div>
+
       </div>
     </div>
   </div>
+
+  <!--
+  PEOPLE and PARTNERS: add when ready. Suggested markup, same 900px container as above:
+
+  <div style="max-width:900px;margin:0 auto;padding:48px 24px 0">
+    <h2 style="font-family:'Lora',serif;font-size:26px;font-weight:600;margin:0 0 16px">People</h2>
+    <p style="font-size:15px;line-height:1.7;color:#5A6470;margin:0 0 8px"><span style="font-weight:600;color:#222A31">Tugce Aldemir</span>, PI</p>
+    <p style="font-size:15px;line-height:1.7;color:#5A6470;margin:0 0 8px"><span style="font-weight:600;color:#222A31">Name</span>, PhD student</p>
+  </div>
+
+  <div style="max-width:900px;margin:0 auto;padding:32px 24px 0">
+    <h2 style="font-family:'Lora',serif;font-size:26px;font-weight:600;margin:0 0 16px">Partners</h2>
+    <p style="font-size:15px;line-height:1.7;color:#5A6470;margin:0">Partner districts, teacher preparation programs, and collaborating faculty.</p>
+  </div>
+  -->
+
   <div class="lab-join-grid" style="max-width:900px;margin:0 auto;padding:48px 24px 56px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center">
     <div>
       <h2 style="font-family:'Lora',serif;font-size:26px;font-weight:600;margin:0 0 8px">Join the lab</h2>
-      <p style="font-size:15px;line-height:1.7;color:#5A6470;margin:0;max-width:58ch">Interested in human-AI learning, computational thinking, or AI literacy? Prospective graduate students and collaborators are welcome to reach out.</p>
+      <!-- Adjust the middle sentence to match how the lab actually operates. -->
+      <p style="font-size:15px;line-height:1.7;color:#5A6470;margin:0;max-width:58ch">Interested in how students and teachers learn with AI, in computational thinking inside STEM subjects, or in collaboration research? Graduate students and collaborators work across the projects above with partner teachers and schools. Prospective students and collaborators are welcome to reach out.</p>
     </div>
     <a class="mobile-full-button" href="mailto:taldemir@tamu.edu" style="background:#3D5A73;color:#F8F7F3;padding:14px 26px;border-radius:4px;font-size:14px;font-weight:600;white-space:nowrap" style-hover="background:#2F475C;color:#F8F7F3">Email Dr. Aldemir</a>
   </div>
-  <div style="border-top:1px solid #DFDDD2">
-    <div style="max-width:1100px;margin:0 auto;padding:20px 24px;font-size:12.5px;color:#8C949C;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
-      <span>© 2026 CoHALE Lab · Tugce Aldemir</span>
-      <a href="mailto:taldemir@tamu.edu" style="color:#5A6470">taldemir@tamu.edu</a>
+
+  <div style="background:#2F475C;color:#C6D3DD">
+    <div style="max-width:1080px;margin:0 auto;padding:20px 28px;font-size:12.5px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <span>&copy; 2026 Tugce Aldemir &middot; CoHALE Lab &middot; Texas A&amp;M University</span>
+      <a href="mailto:taldemir@tamu.edu" style="color:#C6D3DD" style-hover="color:#E9BCA6">taldemir@tamu.edu</a>
     </div>
   </div>
+
 </div>
 </x-dc>
 </body>
